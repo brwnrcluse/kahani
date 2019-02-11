@@ -52,7 +52,12 @@ app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 // default value for title local
 app.locals.title = "kahani";
 
-const index = require("./routes/index");
+// link to routes
+const index = require("./routes/index.js");
 app.use("/", index);
 
+const auth = require("./routes/auth-routes.js");
+app.use("/", auth);
+
+// export app
 module.exports = app;
