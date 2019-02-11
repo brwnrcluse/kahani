@@ -1,1 +1,7 @@
-<p>welcome to {{title}}</p>
+{{> flash_messages}}
+
+{{#if currentUser}}
+<h3>Welcome back, {{currentUser.username}}.</h3>
+{{else}}
+<p>Welcome to Kahani - Want to be part of the challenge?</p>
+{{/if}}

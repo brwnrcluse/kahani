@@ -57,10 +57,9 @@ app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
-// make our Express app create SESSIONS (more on this tomorrow)
+// Makes our Express app create SESSIONS
 app.use(
   session({
-    // these two settings do things. which things? we don't know! but we do know. that if those things aren't done. nothing works.
     saveUninitialized: true,
     resave: true,
     // secret should be a string that's different for every app
@@ -70,7 +69,7 @@ app.use(
 );
 
 // PASSPORT LINES MUST BE BELOW SESSION
-// set up Passport's methods to use in our routes (properites and methods for "req")
+// set up Passport's methods to use in our routes (properties and methods for "req")
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -83,8 +82,10 @@ app.use((req, res, next) => {
   // (req.flash() comes from the "connect-flash" npm package)
   res.locals.messages = req.flash();
 
-  //
   res.locals.currentUser = req.user;
+
+  // local variable meant to record coordinates
+  res.locals.coord = { latitude: 0, longitude: 0 };
 
   // tell Express we are ready to move to the routes now
   // (you need this or your pages will stay loading forever)
@@ -97,7 +98,7 @@ app.locals.title = "kahani";
 const index = require("./routes/index.js");
 app.use("/", index);
 
-const auth = require("./routes/auth-router.js");
+const auth = require("./routes/auth.js");
 app.use("/", auth);
 
 const browse = require("./routes/browse.js");

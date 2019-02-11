@@ -8,22 +8,23 @@ userSchema requirements
 ------------------------------------------------------------
 --}}
 
+<h2>Join</h2>
+
 {{> flash_messages}}
 
-<form method="post" action="/process-signup">
+<form action="/process-join" method="POST">
   <label>
-    email:
-    <input type="String" name="email" required />
+    Username:
+    <input type="text" name="username" required />
   </label>
   <label>
-    username:
-    <input type="String" name="username" required />
+    Email:
+    <input type="email" name="email" required />
   </label>
   <label>
-    password:
-    <input type="String" name="originalPassword" required />
+    Password:
+    <input type="password" name="originalPassword" required />
   </label>
 
-  <button>log in</button>
-
+  <button>Save</button>
 </form>

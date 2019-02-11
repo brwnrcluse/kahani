@@ -14,10 +14,16 @@
   <header>
     <h1>{{title}}</h1>
     <nav>
-      <a href="/join">join</a>
+
+      {{#if currentUser}}
       <a href="/browse">browse</a>
+      <a href="/contribute">contribute</a>
+      <a href="/logout">logout</a>
+      {{else}}
+      <a href="/join">join</a>
       <a href="/login">login</a>
-      <a href="/contribute">contribute -- not yet built!</a>
+      {{/if}}
+
     </nav>
   </header>
 
