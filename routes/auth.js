@@ -81,6 +81,9 @@ router.post("/process-join", (req, res, next) => {
     return;
   }
 
+  // --- !!! BONUS : WE COULD ADD PASSWORD VALIDATOR W/ 1 NUMBER AT LEAST !!!  ----
+  // --- !!! BONUS : WE COULD ADD PASSWORD STRENGTH PLUGIN HERE --> https://www.jquerycards.com/forms/inputs/strength-js/ !!!  ----
+
   // check if username currently exists
   User.findOne({ username: { $eq: username } })
     .then(userDoc => {

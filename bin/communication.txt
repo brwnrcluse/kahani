@@ -1,0 +1,18 @@
+API Google Maps:
+AIzaSyCo80DGqCfxUhFzGtIHuMi-k4PNbd65FLw
+Console -> https://console.cloud.google.com/google/maps-apis/metrics?hl=fr&project=kahani-1549876527001
+
+/// CHECK CONSUMPTION OF DATA REGULARLY
+
+Push-pull issues/conflicts:
+https://stackoverflow.com/questions/6335681/git-how-do-i-get-the-latest-version-of-my-code
+
+History data:
+https://opendata.paris.fr/explore/dataset/plaques_commemoratives_1939-1945/map/?location=16,48.88989,2.34515&basemap=jawg.streets
+
+Password strength:
+https://www.jquerycards.com/forms/inputs/strength-js/
+
+
+Google Maps Themes :
+https://snazzymaps.com/build-a-map
