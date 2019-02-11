@@ -1,0 +1,29 @@
+{{!--
+------------------------------------------------------------
+userSchema requirements
+------------------------------------------------------------
+1. username: { type: String, required: true, unique: true },
+2. email: { type: String, required: true, unique: true },
+3. password: { type: String, required: true }
+------------------------------------------------------------
+--}}
+
+{{> flash_messages}}
+
+<form method="post" action="/process-signup">
+  <label>
+    email:
+    <input type="String" name="email" required />
+  </label>
+  <label>
+    username:
+    <input type="String" name="username" required />
+  </label>
+  <label>
+    password:
+    <input type="String" name="originalPassword" required />
+  </label>
+
+  <button>log in</button>
+
+</form>
