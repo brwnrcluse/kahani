@@ -49,10 +49,18 @@ app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
+app.use(function(req, res, next) {
+  res.locals.coord = { latitude: 0, longitude: 0 };
+  next();
+});
+
 // default value for title local
 app.locals.title = "kahani";
 
-const index = require("./routes/index");
+const index = require("./routes/index.js");
 app.use("/", index);
+
+const browse = require("./routes/browse.js");
+app.use("/", browse);
 
 module.exports = app;
