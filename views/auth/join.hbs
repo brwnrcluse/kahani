@@ -8,6 +8,8 @@ userSchema requirements
 ------------------------------------------------------------
 --}}
 
+{{> flash_messages}}
+
 <form method="post" action="/process-signup">
   <label>
     email:
@@ -19,7 +21,7 @@ userSchema requirements
   </label>
   <label>
     password:
-    <input type="String" name="password" required />
+    <input type="String" name="originalPassword" required />
   </label>
 
   <button>log in</button>

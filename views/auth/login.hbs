@@ -1,3 +1,5 @@
+{{> flash_messages}}
+
 <form method="post" action="/process-login">
   <label>
     username:
@@ -5,7 +7,7 @@
   </label>
   <label>
     password:
-    <input type="String" name="password" required>
+    <input type="String" name="originalPassword" required>
   </label>
 
   <button>log in</button>
