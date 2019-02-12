@@ -22,11 +22,97 @@ function initMap() {
     console.log(`Longitude: ${coord.longitude}`);
     console.log(`More or less ${coord.accuracy} meters.`);
 
-    // Create a map object and specify the DOM element for display.
-    var map = new google.maps.Map(document.getElementById("map"), {
+    // Set map type and display specifications
+    var mapOptions = {
       center: { lat: coord.latitude, lng: coord.longitude },
-      zoom: 16
-    });
+      zoom: 16,
+      styles: [
+        {
+          featureType: "all",
+          elementType: "geometry",
+          stylers: [
+            {
+              visibility: "off"
+            }
+          ]
+        },
+        {
+          featureType: "all",
+          elementType: "labels",
+          stylers: [
+            {
+              visibility: "off"
+            }
+          ]
+        },
+        {
+          featureType: "landscape",
+          elementType: "all",
+          stylers: [
+            {
+              color: "#ffffff"
+            },
+            {
+              visibility: "on"
+            }
+          ]
+        },
+        {
+          featureType: "road",
+          elementType: "geometry",
+          stylers: [
+            {
+              visibility: "on"
+            },
+            {
+              color: "#000000"
+            }
+          ]
+        },
+        {
+          featureType: "transit.line",
+          elementType: "labels.text",
+          stylers: [
+            {
+              visibility: "on"
+            }
+          ]
+        },
+        {
+          featureType: "transit.line",
+          elementType: "labels.icon",
+          stylers: [
+            {
+              visibility: "on"
+            }
+          ]
+        },
+        {
+          featureType: "transit.station.rail",
+          elementType: "labels",
+          stylers: [
+            {
+              visibility: "on"
+            },
+            {
+              weight: "4"
+            }
+          ]
+        },
+        {
+          featureType: "water",
+          elementType: "geometry.fill",
+          stylers: [
+            {
+              visibility: "on"
+            }
+          ]
+        }
+      ]
+    };
+
+    // Create a map object and specify the DOM element for display.
+    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
     // Create a marker and set its position.
     var marker = new google.maps.Marker({
@@ -34,6 +120,10 @@ function initMap() {
       position: { lat: coord.latitude, lng: coord.longitude },
       title: "This is YOU!"
     });
+
+    // Create transit layer
+    var transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
 
     allMarkers();
   }
@@ -55,6 +145,7 @@ function allMarkers() {
     });
   });
 }
+
 /*
 function collectedMarkers() {
   collected.forEach(metroElem => {
