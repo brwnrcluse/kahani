@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const metroSchema = new Schema(
   {
     name: { type: String, required: true, unique: true },
-    line: { type: Number, required: true },
+    line: { type: String, required: true },
     location: { type: [Number], required: true }
   },
   {

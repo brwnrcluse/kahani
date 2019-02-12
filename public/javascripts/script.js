@@ -22,8 +22,7 @@ function initMap() {
     console.log(`Longitude: ${coord.longitude}`);
     console.log(`More or less ${coord.accuracy} meters.`);
 
-    // Create a map object and specify the DOM element
-    // for display.
+    // Create a map object and specify the DOM element for display.
     var map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: coord.latitude, lng: coord.longitude },
       zoom: 16
@@ -35,6 +34,8 @@ function initMap() {
       position: { lat: coord.latitude, lng: coord.longitude },
       title: "This is YOU!"
     });
+
+    allMarkers();
   }
 
   function error(err) {
@@ -43,3 +44,25 @@ function initMap() {
 
   navigator.geolocation.getCurrentPosition(success, error, options);
 }
+
+// Display all markers from DB
+function allMarkers() {
+  allItems.forEach(item => {
+    var marker = new google.maps.Marker({
+      map: map,
+      position: { lat: item.location[0], lng: item.location[1] },
+      title: item.name
+    });
+  });
+}
+/*
+function collectedMarkers() {
+  collected.forEach(metroElem => {
+    var marker = new google.maps.Marker({
+      map: map,
+      position: { lat: metroElem.location[0], lng: metroElem.location[1] },
+      title: metroElem.name
+    });
+  });
+}
+*/

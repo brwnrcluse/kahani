@@ -49,9 +49,7 @@ app.use(
   })
 );
 
-// connect views
 app.set("views", path.join(__dirname, "views"));
-// connect "partials"
 hbs.registerPartials(path.join(__dirname, "views", "partials"));
 app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "public")));
@@ -62,7 +60,6 @@ app.use(
   session({
     saveUninitialized: true,
     resave: true,
-    // secret should be a string that's different for every app
     secret: "ca^khT8KYd,G73C7R9(;^atb?h>FTWdbn4pqEFUKs3",
     store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
@@ -74,26 +71,23 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // allow our routes to use FLASH MESSAGES (feedback messages before redirects)
-// (flash messages need sessions to work)
 app.use(flash());
+
 // app.use() defines our own MIDDLEWARE function
 app.use((req, res, next) => {
-  // send flash messages to the hbs file
-  // (req.flash() comes from the "connect-flash" npm package)
   res.locals.messages = req.flash();
-
   res.locals.currentUser = req.user;
-
-  // local variable meant to record coordinates
+  res.locals.allItems = [];
   res.locals.coord = { latitude: 0, longitude: 0 };
 
-  // tell Express we are ready to move to the routes now
-  // (you need this or your pages will stay loading forever)
   next();
 });
 
 // default value for title local
 app.locals.title = "kahani";
+
+// loading all metro stations
+require("./config/metrolist-load.js");
 
 const index = require("./routes/index.js");
 app.use("/", index);

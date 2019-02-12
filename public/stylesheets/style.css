@@ -3,8 +3,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font: 16px "Merienda", cursive;
-  color: white; }
+  font: 16px "Cairo", sans-serif; }
 
 header {
   display: flex;
@@ -12,14 +11,15 @@ header {
   justify-content: space-between;
   background-color: grey;
   height: 5%;
-  font-size: 0.8rem; }
+  font-size: 0.8rem;
+  color: white; }
 
 header h1 {
   margin-left: 40px; }
 
 a {
   margin: 0 30px;
-  color: black;
+  color: lightgrey;
   text-decoration: none; }
 
 #map {
