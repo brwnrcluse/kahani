@@ -1,16 +1,31 @@
+html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
-  padding: 20px;
-  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px "Merienda", cursive;
+  color: white;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: grey;
+  height: 5%;
+  font-size: 0.8rem;
+}
+
+header h1 {
+  margin-left: 40px;
 }
 
 a {
-  display: block;
-  color: #00b7ff;
+  margin: 0 30px;
+  color: black;
+  text-decoration: none;
 }
 
 #map {
-  height: 500px;
+  height: 95%;
 }
