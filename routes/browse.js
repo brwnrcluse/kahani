@@ -18,11 +18,20 @@ router.get("/browse", (req, res, next) => {
         res.redirect("/login");
         return;
       }
-
       res.locals.collectedItems = userDoc.collected;
       res.render("browse/browse.hbs");
     })
     .catch(err => next(err));
 });
+
+router.get("/allmetros", (req, res, next) => {
+  Metro.find()
+    .then(results => {
+      res.json(results);
+    })
+    .catch(err => next(err));
+});
+
+User.findById(req.user._id).populate("collected");
 
 module.exports = router;

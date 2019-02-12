@@ -114,7 +114,7 @@ router.post("/process-join", (req, res, next) => {
   User.create({ username, email, encryptedPassword })
     .then(() => {
       req.flash("success", "You've successfully created a new account!");
-      res.redirect("/browse");
+      res.redirect("/");
     })
     .catch(err => next(err));
 });

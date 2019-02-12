@@ -13,6 +13,8 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const MongoStore = require("connect-mongo")(session);
 
+const Metro = require("./models/Metro.js");
+
 // run the code inside the passport-setup.js
 require("./config/passport-setup.js");
 
@@ -77,7 +79,6 @@ app.use(flash());
 app.use((req, res, next) => {
   res.locals.messages = req.flash();
   res.locals.currentUser = req.user;
-  res.locals.allItems = [];
   res.locals.coord = { latitude: 0, longitude: 0 };
 
   next();
@@ -85,9 +86,6 @@ app.use((req, res, next) => {
 
 // default value for title local
 app.locals.title = "kahani";
-
-// loading all metro stations
-require("./config/metrolist-load.js");
 
 const index = require("./routes/index.js");
 app.use("/", index);

@@ -10,7 +10,7 @@ document.addEventListener(
 function initMap() {
   var options = {
     enableHighAccuracy: true,
-    timeout: 5000,
+    // timeout: 5000,
     maximumAge: 0
   };
 
@@ -25,7 +25,7 @@ function initMap() {
     // Set map type and display specifications
     var mapOptions = {
       center: { lat: coord.latitude, lng: coord.longitude },
-      zoom: 16,
+      zoom: 13,
       styles: [
         {
           featureType: "all",
@@ -125,7 +125,8 @@ function initMap() {
     var transitLayer = new google.maps.TransitLayer();
     transitLayer.setMap(map);
 
-    allMarkers();
+    allMarkers(map);
+    collectedMarkers(map);
   }
 
   function error(err) {
@@ -136,19 +137,25 @@ function initMap() {
 }
 
 // Display all markers from DB
-function allMarkers() {
-  allItems.forEach(item => {
-    var marker = new google.maps.Marker({
-      map: map,
-      position: { lat: item.location[0], lng: item.location[1] },
-      title: item.name
-    });
-  });
+function allMarkers(map) {
+  axios
+    .get("/allmetros")
+    .then(response => {
+      const allItems = response.data;
+
+      allItems.forEach(item => {
+        var marker = new google.maps.Marker({
+          map: map,
+          position: { lat: item.location[0], lng: item.location[1] },
+          title: item.name
+        });
+      });
+    })
+    .catch(err => console.log("Metro Error", err));
 }
 
-/*
 function collectedMarkers() {
-  collected.forEach(metroElem => {
+  collectedItems.forEach(metroElem => {
     var marker = new google.maps.Marker({
       map: map,
       position: { lat: metroElem.location[0], lng: metroElem.location[1] },
@@ -156,4 +163,3 @@ function collectedMarkers() {
     });
   });
 }
-*/
