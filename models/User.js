@@ -13,7 +13,10 @@ const userSchema = new Schema(
       enum: ["normal", "admin"],
       default: "normal"
     },
-    collected: [{ type: Schema.Types.ObjectId, ref: "Metro" }]
+    collected: [{ type: Schema.Types.ObjectId, ref: "Metro" }],
+    challenges_active: { type: Array },
+    challenges_completed: { type: Array },
+    challenges_queued: { type: Array }
   },
   { timestamps: true }
 );
