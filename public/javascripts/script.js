@@ -27,7 +27,18 @@ function initMap() {
       center: { lat: coord.latitude, lng: coord.longitude },
       zoom: 13,
       styles: [
-        {
+        /* {
+          featureType: "transit.station.rail",
+          elementType: "labels.icon",
+          stylers: [
+            {
+              color: "#ff0000"
+            },
+            {
+              visibility: "on"
+            }
+          ]
+        },*/ {
           featureType: "all",
           elementType: "geometry",
           stylers: [

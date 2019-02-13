@@ -16,3 +16,7 @@ https://www.jquerycards.com/forms/inputs/strength-js/
 
 Google Maps Themes :
 https://snazzymaps.com/build-a-map
+
+Possible fonts:
+https://www.myfonts.com/fonts/redrooster/canterbury-old-style-rr/
+https://www.myfonts.com/fonts/andreas-stotzner/andron-2/

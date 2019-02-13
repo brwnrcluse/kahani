@@ -32,6 +32,6 @@ router.get("/allmetros", (req, res, next) => {
     .catch(err => next(err));
 });
 
-User.findById(req.user._id).populate("collected");
+// User.findById(req.user._id).populate("collected");
 
 module.exports = router;
