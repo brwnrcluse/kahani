@@ -6,7 +6,7 @@ const User = require("../models/User.js");
 const Metro = require("../models/Metro.js");
 
 mongoose
-  .connect("mongodb://localhost/kahani", { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
