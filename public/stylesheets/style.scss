@@ -3,21 +3,26 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font: 16px "Cairo", sans-serif;
+  font: 18px "Cairo", sans-serif;
+  background-color: white;
 }
 
 header {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: grey;
-  height: 5%;
+  background-color: black;
+  opacity: 0.9;
+  height: 80px;
   font-size: 0.8rem;
   color: white;
 }
 
 header h1 {
   margin-left: 40px;
+  color: white;
 }
 
 a {
@@ -27,5 +32,31 @@ a {
 }
 
 #map {
-  height: 95%;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+@media (min-width: 1000px) {
+  header {
+    height: 60px;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 650px) and (max-width: 999px) {
+  header {
+    height: 40px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 649px) {
+  header {
+    height: 20px;
+    font-size: 0.6rem;
+  }
 }

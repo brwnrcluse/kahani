@@ -15,7 +15,11 @@ const iconBase = "https://maps.google.com/mapfiles/ms/icons/";
 // set map type and display specifications
 const mapOptions = {
   center: mapCenter,
-  zoom: 13,
+  zoom: 12,
+  disableDefaultUI: true,
+  zoomControl: true,
+  scaleControl: true,
+  rotateControl: true,
   styles: [
     /* {
         featureType: "transit.station.rail",
@@ -63,10 +67,13 @@ const mapOptions = {
       elementType: "geometry",
       stylers: [
         {
-          visibility: "on"
+          visibility: "simplified"
         },
         {
           color: "#000000"
+        },
+        {
+          lightness: "80"
         }
       ]
     },
@@ -138,10 +145,11 @@ function setCurrentPosition(pos) {
     position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
     icon: {
       path: google.maps.SymbolPath.CIRCLE,
-      scale: 12,
+      scale: 10,
       fillColor: "#00F",
-      fillOpacity: 0.6,
-      strokeWeight: 0.4
+      fillOpacity: 0.7,
+      strokeWeight: 0.1,
+      strokeColor: "#00F"
     },
     title: "Current Position"
   });
@@ -209,10 +217,11 @@ function allMarkers(map, markerArray) {
           title: item.name,
           icon: {
             path: google.maps.SymbolPath.CIRCLE,
-            scale: 12,
+            scale: 10,
             fillColor: "#F00",
             fillOpacity: 0.4,
-            strokeWeight: 0.4
+            strokeWeight: 0.1,
+            strokeColor: "#F00"
           }
         });
         markerArray.push(marker);
@@ -237,10 +246,11 @@ function collectedMarkers(map, markerArray) {
 
             marker.setIcon({
               path: google.maps.SymbolPath.CIRCLE,
-              scale: 12,
+              scale: 10,
               fillColor: "#0F0",
-              fillOpacity: 0.6,
-              strokeWeight: 0.4
+              fillOpacity: 0.7,
+              strokeWeight: 0.1,
+              strokeColor: "#0F0"
             });
             console.log(`changed color on ${marker.title}`);
           }
