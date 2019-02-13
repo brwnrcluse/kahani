@@ -79,7 +79,6 @@ app.use(flash());
 app.use((req, res, next) => {
   res.locals.messages = req.flash();
   res.locals.currentUser = req.user;
-  res.locals.coord = { latitude: 0, longitude: 0 };
   next();
 });
 
