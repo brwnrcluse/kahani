@@ -1,7 +1,7 @@
 document.addEventListener(
   "DOMContentLoaded",
   () => {
-    console.log("JS imported successfully!");
+    console.log("DOM content loaded successfully!");
   },
   false
 );
@@ -10,7 +10,7 @@ document.addEventListener(
 function initMap() {
   var options = {
     enableHighAccuracy: true,
-    // timeout: 5000,
+    //  timeout: 5000,
     maximumAge: 0
   };
 
@@ -114,19 +114,30 @@ function initMap() {
     // Create a map object and specify the DOM element for display.
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
+    var iconBase = "https://maps.google.com/mapfiles/ms/icons/";
+
     // Create a marker and set its position.
     var marker = new google.maps.Marker({
       map: map,
       position: { lat: coord.latitude, lng: coord.longitude },
-      title: "This is YOU!"
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: 12,
+        fillColor: "#00F",
+        fillOpacity: 0.6,
+        strokeWeight: 0.4
+      },
+      title: "You are HERE."
     });
 
     // Create transit layer
     var transitLayer = new google.maps.TransitLayer();
     transitLayer.setMap(map);
 
-    allMarkers(map);
-    collectedMarkers(map);
+    const markers = [];
+
+    allMarkers(map, markers);
+    collectedMarkers(map, markers);
   }
 
   function error(err) {
@@ -136,8 +147,10 @@ function initMap() {
   navigator.geolocation.getCurrentPosition(success, error, options);
 }
 
-// Display all markers from DB
-function allMarkers(map) {
+// Display all markers
+function allMarkers(map, markerArray) {
+  var iconBase = "https://maps.google.com/mapfiles/ms/icons/";
+
   axios
     .get("/allmetros")
     .then(response => {
@@ -147,19 +160,48 @@ function allMarkers(map) {
         var marker = new google.maps.Marker({
           map: map,
           position: { lat: item.location[0], lng: item.location[1] },
-          title: item.name
+          title: item.name,
+          icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 12,
+            fillColor: "#F00",
+            fillOpacity: 0.4,
+            strokeWeight: 0.4
+          }
+        });
+        markerArray.push(marker);
+      });
+    })
+    .catch(err => console.log("ERROR in allMarkers", err.response.data));
+}
+
+// Display collected markers only (different color)
+function collectedMarkers(map, markerArray) {
+  var iconBase = "https://maps.google.com/mapfiles/ms/icons/";
+
+  console.log("markerArray IN collectedMarkers", markerArray);
+
+  axios
+    .get("/mymetros")
+    .then(response => {
+      const userCollection = response.data.collected;
+
+      userCollection.forEach(item => {
+        markerArray.forEach(marker => {
+          if (item.name === marker.title) {
+            console.log(`MATCH FOUND: ${marker.title}`);
+
+            marker.setIcon({
+              path: google.maps.SymbolPath.CIRCLE,
+              scale: 12,
+              fillColor: "#0F0",
+              fillOpacity: 0.6,
+              strokeWeight: 0.4
+            });
+            console.log(`changed color on ${marker.title}`);
+          }
         });
       });
     })
-    .catch(err => console.log("Metro Error", err));
-}
-
-function collectedMarkers() {
-  collectedItems.forEach(metroElem => {
-    var marker = new google.maps.Marker({
-      map: map,
-      position: { lat: metroElem.location[0], lng: metroElem.location[1] },
-      title: metroElem.name
-    });
-  });
+    .catch(err => console.log("ERROR in collectedMarkers", err.response.data));
 }

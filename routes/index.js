@@ -6,8 +6,4 @@ router.get("/", (req, res, next) => {
   res.render("index.hbs");
 });
 
-router.get("/challenges", (req, res, next) => {
-  res.render("challenges.hbs");
-});
-
 module.exports = router;
