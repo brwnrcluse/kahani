@@ -57,7 +57,7 @@ router.post("/process-login", (req, res, next) => {
       // password matching => establishes new session
       req.logIn(userDoc, () => {
         req.flash("success", "Log in success!");
-        res.redirect("/browse");
+        res.redirect("/dashboard");
       });
     })
     .catch(err => next(err));
@@ -113,10 +113,23 @@ router.post("/process-join", (req, res, next) => {
   // create new user
   User.create({ username, email, encryptedPassword })
     .then(() => {
-      req.flash("success", "You've successfully created a new account!");
-      res.redirect("/");
+      User.findOne({ username: { $eq: username } })
+        .then(userDoc => {
+          req.logIn(userDoc, () => {
+            req.flash(
+              "success",
+              "You've successfully created a new account. Welcome!"
+            );
+            res.redirect("/dashboard");
+          });
+        })
+        .catch(err => next(err));
     })
     .catch(err => next(err));
+});
+
+router.get("/dashboard", (req, res, next) => {
+  res.render("dashboard.hbs");
 });
 
 // LOGOUT

@@ -1,0 +1,49 @@
+{{> flash_messages}}
+
+{{#if currentUser}}
+<h3>Welcome back, {{currentUser.username}}.</h3>
+
+<section class="challenge-array active-challenges">
+  <h4>active challenges</h4>
+  {{#if currentUser.challenges_active}}
+
+  {{#each currentUser.challenges_active}}
+  {{!-- partial to display an array of challenges --}}
+  {{/each}}
+
+  {{else}}
+  <p>
+    you have zero active challenges. <a href="/challenges">start one now!</a>
+  </p>
+  {{/if}}
+
+</section>
+<section class="challenge-array queued-challenges">
+  <h4>challenge queue</h4>
+  {{#if currentUser.challenges_queued}}
+
+  {{#each currentUser.challenges_queued}}
+  {{!-- partial to display an array of challenges --}}
+  {{/each}}
+
+  {{else}}
+  <p>
+    you have zero challenges queued. <a href="/challenges">wanna change that?</a>
+  </p>
+  {{/if}}
+
+</section>
+{{#if currentUser.challenges_completed}}
+<section class="challenge-array completed-challenges">
+  <h4>completed challenges</h4>
+
+  {{#each currentUser.challenges_completed}}
+  {{!-- partial to display an array of challenges --}}
+  {{/each}}
+</section>
+{{/if}}
+
+
+{{else}}
+<p>Sorry, you must be logged in to view this page.</p>
+{{/if}}
