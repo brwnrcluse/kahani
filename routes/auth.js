@@ -119,7 +119,7 @@ router.post("/process-join", (req, res, next) => {
     .catch(err => next(err));
 });
 
-// PROCESS 'JOIN' FORM
+// LOGOUT
 // -----------------------------------------------------------
 router.get("/logout", (req, res, next) => {
   req.logOut();
