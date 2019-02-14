@@ -53,8 +53,9 @@ a {
 
 .homepage-form {
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   height: 100%;
   width: 100%;
 }
@@ -62,15 +63,30 @@ a {
 .homepage-form form {
   display: flex;
   flex-direction: column;
+  justify-content: end;
   height: 100%;
   width: 100%;
 }
 
+.form-field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .screenshots {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 100%;
-  // width: 100%;
+  width: 100%;
+}
+
+.screenshots .image-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #tagline {
