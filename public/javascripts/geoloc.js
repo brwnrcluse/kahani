@@ -2,8 +2,7 @@ let currentPositionMarker = {};
 const mapCenter = new google.maps.LatLng(48.864716, 2.349014);
 let map = {};
 const circles = [];
-const circleRadius = 500;
-
+const circleRadius = 250;
 const collectedColor = "#0F0";
 
 const initOptions = {
@@ -158,7 +157,7 @@ function setCurrentPosition(position) {
       strokeWeight: 0.1,
       strokeColor: "#00F"
     },
-    title: "Current Position"
+    name: "Current Position"
   });
 
   console.log("Your current position is:");
@@ -174,6 +173,8 @@ function setCurrentPosition(position) {
 function displayAndWatch(position) {
   // set current position
   setCurrentPosition(position);
+
+  //smoothZoom(map, 16, map.getZoom());
 
   // watch position
   watchCurrentPosition();
@@ -209,30 +210,37 @@ function updateDistance(position) {
     );
 
     if (distance <= circleRadius && circle.collected === false) {
-      console.log(circle.collected);
+      let direction = 1;
+      let rMin = circleRadius - 150,
+        rMax = circleRadius;
+      let interval = setInterval(() => {
+        let rad = circle.getRadius();
+        console.log(rad);
+        if (rad > rMax || rad < rMin) {
+          direction *= -1;
+        }
+        circle.setRadius(rad + direction * 10);
+      }, 100);
+
       circle.setOptions({
-        fillColor: "#0FF",
-        fillOpacity: 0.7,
-        strokeWeight: 0.1,
-        strokeColor: "#0FF"
+        fillOpacity: 0.8
       });
 
       circle.addListener("click", function() {
+        this.removeListener();
         this.setOptions({
-          fillColor: "#000",
+          fillColor: collectedColor,
           fillOpacity: 0.7,
           strokeWeight: 0.1,
-          strokeColor: "#000",
-          collected: true
+          strokeColor: collectedColor,
+          collected: true,
+          radius: circleRadius
         });
-        updateCollectionAfterClick(circle);
+        clearInterval(interval);
+        updateCollectionAfterClick(circle.name);
       });
     }
   });
-}
-
-function initLocationProcedure() {
-  placeElements();
 }
 
 // initialize with a little help of jQuery
@@ -256,7 +264,7 @@ function allItems(map, circleArray) {
           fillOpacity: 0.4,
           strokeWeight: 0.1,
           strokeColor: "#F00",
-          title: item.name,
+          name: item.name,
           collected: false
         });
 
@@ -275,9 +283,7 @@ function collectedItems(map, circleArray) {
 
       userCollection.forEach(item => {
         circleArray.forEach(circle => {
-          if (item.name === circle.title) {
-            console.log(`IS IN COLLECTED ITEMS: ${circle.title}`);
-
+          if (item.name === circle.name) {
             circle.setOptions({
               fillColor: collectedColor,
               fillOpacity: 0.7,
@@ -286,7 +292,7 @@ function collectedItems(map, circleArray) {
               collected: true
             });
 
-            console.log(`COLOR CHANGED on ${circle.title}`);
+            console.log(`COLOR CHANGED on ${circle.name}`);
           }
         });
       });
@@ -295,9 +301,9 @@ function collectedItems(map, circleArray) {
 }
 
 // Update DB after clicking on a circle
-function updateCollectionAfterClick(circle) {
+function updateCollectionAfterClick(name) {
   axios
-    .post("/clicked", { itemName: circle.title })
+    .post("/clicked", { itemName: name })
     .then(() => {
       collectedItems(map, circles);
       console.log("Collection updated, map should be too.");
@@ -307,7 +313,7 @@ function updateCollectionAfterClick(circle) {
     );
 }
 
-async function placeElements() {
+async function initLocationProcedure() {
   let status = await initializeMap();
 
   if (navigator.geolocation) {
@@ -319,5 +325,21 @@ async function placeElements() {
   } else {
     // tell the user if a browser doesn't support this amazing API
     alert("Your browser does not support the Geolocation API!");
+  }
+}
+
+function smoothZoom(map, max, cnt) {
+  if (cnt >= max) {
+    return;
+  } else {
+    setTimeout(function() {
+      z = google.maps.event.addListener(map, "zoom_changed", function(event) {
+        google.maps.event.removeListener(z);
+        smoothZoom(map, max, cnt + 0.1);
+      });
+      setTimeout(function() {
+        map.setZoom(cnt);
+      }, 100);
+    }, 2000);
   }
 }
