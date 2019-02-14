@@ -31,4 +31,25 @@ router.get("/mymetros", (req, res, next) => {
     .catch(err => next(err));
 });
 
+/* Add an item to collected items once clicked on its circle */
+router.post("/clicked", (req, res, next) => {
+  const { itemName } = req.body;
+
+  Metro.findOne({ name: { $eq: itemName } })
+    .then(metroDoc => {
+      User.findByIdAndUpdate(
+        req.user._id,
+        { $push: { collected: metroDoc } },
+        { runValidators: true }
+      )
+        .then(userDoc => {
+          console.log(`Item correctly added to username : ${userDoc.name}.`);
+        })
+        .catch(err => console.log("Error when adding to user collection", err));
+    })
+    .catch(err => {
+      console.log("Error when looking for item in database", err);
+    });
+});
+
 module.exports = router;
