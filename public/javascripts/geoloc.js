@@ -126,13 +126,10 @@ function initializeMap() {
     let transitLayer = new google.maps.TransitLayer();
     transitLayer.setMap(map);
 
-    // Collect all items from DB and push them inside the array
-    allItems(map, circles);
-
     // Collect all collected items from the user and update color in map
     collectedItems(map, circles);
 
-    resolve("done");
+    resolve("INITIALIZE MAP done.");
   });
 }
 
@@ -227,7 +224,6 @@ function updateDistance(position) {
       });
 
       circle.addListener("click", function() {
-        this.removeListener();
         this.setOptions({
           fillColor: collectedColor,
           fillOpacity: 0.7,
@@ -238,6 +234,7 @@ function updateDistance(position) {
         });
         clearInterval(interval);
         updateCollectionAfterClick(circle.name);
+        google.maps.event.clearListeners(circle, "click");
       });
     }
   });
@@ -250,35 +247,44 @@ $(document).ready(function() {
 
 // Display all items
 function allItems(map, circleArray) {
-  axios
-    .get("/allmetros")
-    .then(response => {
-      const allItems = response.data;
+  return new Promise(resolve => {
+    axios
+      .get("/allmetros")
+      .then(response => {
+        console.log("START OF THEN");
 
-      allItems.forEach(item => {
-        var circle = new google.maps.Circle({
-          map: map,
-          center: { lat: item.location[0], lng: item.location[1] },
-          radius: circleRadius,
-          fillColor: "#F00",
-          fillOpacity: 0.4,
-          strokeWeight: 0.1,
-          strokeColor: "#F00",
-          name: item.name,
-          collected: false
+        const allItems = response.data;
+
+        allItems.forEach(item => {
+          var circle = new google.maps.Circle({
+            map: map,
+            center: { lat: item.location[0], lng: item.location[1] },
+            radius: circleRadius,
+            fillColor: "#F00",
+            fillOpacity: 0.4,
+            strokeWeight: 0.1,
+            strokeColor: "#F00",
+            name: item.name,
+            collected: false
+          });
+
+          circleArray.push(circle);
         });
 
-        circleArray.push(circle);
-      });
-    })
-    .catch(err => console.log("ERROR in allItems", err.response.data));
+        resolve("ALL ITEMS LOADED done");
+      })
+      .catch(err => console.log("ERROR in allItems", err.response.data));
+  });
 }
 
 // Display collected items only (different color)
-function collectedItems(map, circleArray) {
+async function collectedItems(map, circleArray) {
+  let status = await allItems(map, circleArray);
+
   axios
     .get("/mymetros")
     .then(response => {
+      console.log("START OF THEN // COLLECTED ITEMS");
       const userCollection = response.data.collected;
 
       userCollection.forEach(item => {
