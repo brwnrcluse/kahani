@@ -57,7 +57,7 @@ router.post("/process-login", (req, res, next) => {
       // password matching => establishes new session
       req.logIn(userDoc, () => {
         req.flash("success", "Log in success!");
-        res.redirect("/dashboard");
+        res.redirect("/");
       });
     })
     .catch(err => next(err));
@@ -120,7 +120,7 @@ router.post("/process-join", (req, res, next) => {
               "success",
               "You've successfully created a new account. Welcome!"
             );
-            res.redirect("/dashboard");
+            res.redirect("/");
           });
         })
         .catch(err => next(err));
@@ -128,9 +128,9 @@ router.post("/process-join", (req, res, next) => {
     .catch(err => next(err));
 });
 
-router.get("/dashboard", (req, res, next) => {
-  res.render("dashboard.hbs");
-});
+// router.get("/dashboard", (req, res, next) => {
+//   res.render("dashboard.hbs");
+// });
 
 // LOGOUT
 // -----------------------------------------------------------

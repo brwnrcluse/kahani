@@ -1,12 +1,45 @@
-<h1>kahāṇī</h1>
-<ul>
-  <li>
+<div class="container">
+
+
+
+  {{!-- <ul>
+  <li class="homepage">
     <a href="/join">join</a>
   </li>
-  <li>
+  <li class="homepage">
     <a href="/browse">browse</a>
   </li>
-  <li>
+  <li class="homepage">
     <a href="/login">login</a>
   </li>
-</ul>
+</ul> --}}
+  <h1 id="tagline">explore the stories around you.</h1>
+
+  <div class="join-bait">
+    <section class="homepage-form">
+      <label>join
+        <form action="/process-join" method="POST">
+          <label class="form-field">
+            Username:
+            <input type="text" name="username" required />
+          </label>
+          <label class="form-field">
+            Email:
+            <input type="email" name="email" required />
+          </label>
+          <label class="form-field">
+            Password:
+            <input type="password" name="originalPassword" required />
+          </label>
+
+          <button>Save</button>
+        </form>
+      </label>
+    </section>
+
+    <section class="screenshots">
+      <img src="https://www.fillmurray.com/320/180">
+      <img src="https://www.fillmurray.com/320/180">
+    </section>
+  </div>
+</div>

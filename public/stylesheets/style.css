@@ -27,6 +27,45 @@ a {
   color: lightgrey;
   text-decoration: none; }
 
+.homepage {
+  list-style: none; }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%; }
+
+.join-bait {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 100%;
+  width: 100%; }
+
+.homepage-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  height: 100%;
+  width: 100%; }
+
+.homepage-form form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%; }
+
+.screenshots {
+  display: flex;
+  flex-direction: column;
+  height: 100%; }
+
+#tagline {
+  font-size: 8vh;
+  height: 20%;
+  width: 100%; }
+
 #map {
   height: 100%;
   width: 100%;
