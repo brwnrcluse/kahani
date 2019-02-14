@@ -2,7 +2,7 @@ let currentPositionMarker = {};
 const mapCenter = new google.maps.LatLng(48.864716, 2.349014);
 let map = {};
 const circles = [];
-const circleRadius = 250;
+const circleRadius = 500;
 
 const collectedColor = "#0F0";
 
@@ -120,17 +120,21 @@ const mapOptions = {
 };
 
 function initializeMap() {
-  map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  return new Promise(resolve => {
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-  // Create transit layer
-  let transitLayer = new google.maps.TransitLayer();
-  transitLayer.setMap(map);
+    // Create transit layer
+    let transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
 
-  // Collect all items from DB and push them inside the array
-  allItems(map, circles);
+    // Collect all items from DB and push them inside the array
+    allItems(map, circles);
 
-  // Collect all collected items from the user and update color in map
-  collectedItems(map, circles);
+    // Collect all collected items from the user and update color in map
+    collectedItems(map, circles);
+
+    resolve("done");
+  });
 }
 
 function locError(error) {
@@ -178,7 +182,6 @@ function displayAndWatch(position) {
 function watchCurrentPosition() {
   let positionTimer = navigator.geolocation.watchPosition(function(position) {
     setMarkerPosition(currentPositionMarker, position);
-    console.log("WATCHING POSITION");
     updateDistance(position);
   });
 }
@@ -205,43 +208,31 @@ function updateDistance(position) {
       circlePos
     );
 
-    if (distance <= circleRadius) {
-      /*
+    if (distance <= circleRadius && circle.collected === false) {
+      console.log(circle.collected);
       circle.setOptions({
         fillColor: "#0FF",
         fillOpacity: 0.7,
         strokeWeight: 0.1,
         strokeColor: "#0FF"
       });
-      */
-      if (!circle.fillColor === collectedColor) {
-        circle.addListener("click", function() {
-          this.setOptions({
-            fillColor: "#000",
-            fillOpacity: 0.7,
-            strokeWeight: 0.1,
-            strokeColor: "#000"
-          });
 
-          updateCollectionAfterClick(circle);
+      circle.addListener("click", function() {
+        this.setOptions({
+          fillColor: "#000",
+          fillOpacity: 0.7,
+          strokeWeight: 0.1,
+          strokeColor: "#000",
+          collected: true
         });
-      }
+        updateCollectionAfterClick(circle);
+      });
     }
   });
 }
 
 function initLocationProcedure() {
-  initializeMap();
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      displayAndWatch,
-      locError,
-      initOptions
-    );
-  } else {
-    // tell the user if a browser doesn't support this amazing API
-    alert("Your browser does not support the Geolocation API!");
-  }
+  placeElements();
 }
 
 // initialize with a little help of jQuery
@@ -269,16 +260,6 @@ function allItems(map, circleArray) {
           collected: false
         });
 
-        //circle is the google.maps.Circle-instance
-        circle.addListener("click", function() {
-          this.setOptions({
-            fillColor: "#FF0",
-            fillOpacity: 0.7,
-            strokeWeight: 0.1,
-            strokeColor: "#FF0"
-          });
-        });
-
         circleArray.push(circle);
       });
     })
@@ -301,7 +282,8 @@ function collectedItems(map, circleArray) {
               fillColor: collectedColor,
               fillOpacity: 0.7,
               strokeWeight: 0.1,
-              strokeColor: collectedColor
+              strokeColor: collectedColor,
+              collected: true
             });
 
             console.log(`COLOR CHANGED on ${circle.title}`);
@@ -323,4 +305,19 @@ function updateCollectionAfterClick(circle) {
     .catch(err =>
       console.log("ERROR in updateCollectionAfterClick", err.response.data)
     );
+}
+
+async function placeElements() {
+  let status = await initializeMap();
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      displayAndWatch,
+      locError,
+      initOptions
+    );
+  } else {
+    // tell the user if a browser doesn't support this amazing API
+    alert("Your browser does not support the Geolocation API!");
+  }
 }
