@@ -80,7 +80,7 @@ a {
   justify-content: space-between;
 }
 
-/* Metro Challenge */
+/* METRO CHALLENGE (BROWSE PAGE) */
 
 $metroColor1: #00c4b3;
 $metroColor2: #050d9e;
@@ -104,33 +104,11 @@ span {
   color: white;
 }
 
-.form-field {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 1.5vh 0;
-  width: 100%;
-  height: 5vh;
-  font-size: 3vh;
+.dropdown-item {
+  font-size: 0.7em;
 }
 
-.form-field input {
-  margin-left: 2vh;
-  border-radius: 15px;
-}
-
-.screenshots .image-holder {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#tagline {
-  font-size: 8vh;
-  height: 20%;
-  width: 100%;
-}
+/* MAP */
 
 #map {
   height: 100%;
@@ -140,6 +118,8 @@ span {
   left: 0;
   z-index: 0;
 }
+
+/* MEDIA QUERIES */
 
 // Smaller devices (<576px)
 @media (max-width: 576px) {
