@@ -72,6 +72,16 @@ header {
   z-index: 1;
 }
 
+.myLogo {
+  -webkit-filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
+}
+
+.myLogo2 {
+  -webkit-filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.5));
+}
+
 a {
   margin: 0 10px;
 }
@@ -115,6 +125,17 @@ span {
 }
 
 #join-form {
+  width: 50%;
+  margin: 0 auto;
+}
+
+/* LOGIN PAGE */
+
+#login-title {
+  margin: 20px 40px;
+}
+
+#login-form {
   width: 50%;
   margin: 0 auto;
 }

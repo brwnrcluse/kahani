@@ -1,18 +1,16 @@
-<h1>Log In to Kahani</h1>
-<p>or <a href="/join">create an account</a></p>
-
+<h1 id="login-title">Log In to Kahani</h1>
 {{> flash_messages}}
 
-<form class="form-page" action="/process-login" method="POST">
-  <label class="form-field">
-    Username
-    <input style="font-size:3vh;" type="text" name="username" required />
-  </label>
-  <label class="form-field">
-    Password
-    <input style="font-size:3vh;" type="password" name="originalPassword" required>
-  </label>
-
-  <button>log in</button>
-</form>
+<div id="login-form">
+  <form action="/process-join" method="POST">
+    <div class="form-group">
+      <label for="inputUsername">Username</label>
+      <input type="text" name="username" class="form-control" id="inputUsername" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="inputPassword">Password</label>
+      <input type="password" name="originalPassword" class="form-control" id="inputPassword" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 </div>
