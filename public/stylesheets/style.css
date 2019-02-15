@@ -3,29 +3,36 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font: 18px "Cairo", sans-serif;
-  background-color: white; }
+  font: 16px "Cairo", sans-serif; }
 
 header {
   position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: black;
-  opacity: 0.9;
-  height: 80px;
-  font-size: 0.8rem;
-  color: white; }
-
-header h1 {
-  margin-left: 40px;
-  color: white; }
+  z-index: 1; }
 
 a {
-  margin: 0 30px;
-  color: lightgrey;
-  text-decoration: none; }
+  margin: 0 10px; }
+
+.jumbotron {
+  margin: 20px auto;
+  width: 80%; }
+
+.navbar {
+  background-color: #00c4b3; }
+
+#navbarNavText {
+  justify-content: space-between; }
+
+span {
+  font-weight: bold;
+  font-size: 1.2em; }
+
+.username-metro {
+  background-color: #00c4b3;
+  color: white; }
+
+.score-metro {
+  background-color: #050d9e;
+  color: white; }
 
 .homepage {
   list-style: none; }
@@ -88,20 +95,5 @@ a {
   top: 0;
   left: 0;
   z-index: 0; }
-
-@media (min-width: 1000px) {
-  header {
-    height: 60px;
-    font-size: 1rem; } }
-
-@media (min-width: 650px) and (max-width: 999px) {
-  header {
-    height: 40px;
-    font-size: 0.8rem; } }
-
-@media (max-width: 649px) {
-  header {
-    height: 20px;
-    font-size: 0.6rem; } }
 
 /*# sourceMappingURL=style.css.map */

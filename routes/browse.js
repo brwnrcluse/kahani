@@ -52,4 +52,11 @@ router.post("/clicked", (req, res, next) => {
     });
 });
 
+/* get scores => display on leaderboard */
+router.get("/scores", (req, res, next) => {
+  User.find()
+    .then(result => res.json(result))
+    .catch(err => next(err));
+});
+
 module.exports = router;
