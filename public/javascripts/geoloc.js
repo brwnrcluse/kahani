@@ -2,7 +2,7 @@ let currentPositionMarker = {};
 const mapCenter = new google.maps.LatLng(48.864716, 2.349014);
 let map = {};
 const circles = [];
-const circleRadius = 400;
+const circleRadius = 100;
 
 const markerColor = "#050D9E";
 const tobepickedColor = "#E2231A";
