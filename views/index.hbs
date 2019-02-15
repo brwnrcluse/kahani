@@ -1,46 +1,38 @@
-<div class="container">
+<div class="container landing-page landing-page-background">
 
-
-
-  {{!-- <ul>
-  <li class="homepage">
-    <a href="/join">join</a>
-  </li>
-  <li class="homepage">
-    <a href="/browse">browse</a>
-  </li>
-  <li class="homepage">
-    <a href="/login">login</a>
-  </li>
-</ul> --}}
   <h1 id="tagline">explore the stories around you.</h1>
 
   <div class="join-bait">
-    <section class="homepage-form">
-      <label class="join-form">join
-        <form action="/process-join" method="POST">
+    <section class="homepage-form-container">
+      <div class="homepage-signup">
+        <h2>sign up today!</h2>
+        {{!-- </div>
+      <div> --}}
+        <form class="homepage-form" action="/process-join" method="POST">
           <label class="form-field">
-            Username:
-            <input type="text" name="username" required />
+            Username
+            <input style="font-size:3vh;" type="text" name="username" placeholder="jimmybuckets23" required />
           </label>
           <label class="form-field">
-            Email:
-            <input type="email" name="email" required />
+            Email
+            <input style="font-size:3vh;" class="email" type="email" name="email" placeholder="jb23@gmail.com"
+              required />
           </label>
           <label class="form-field">
-            Password:
-            <input type="password" name="originalPassword" required />
+            Password
+            <input style="font-size:3vh;" type="password" name="originalPassword"
+              placeholder="the most important decision you'll ever make" required />
           </label>
 
-          <button>Save</button>
+          <button>create account</button>
         </form>
-      </label>
+      </div>
     </section>
 
     <section class="screenshots">
       <div class="image-holder">
-        <img src="https://www.fillmurray.com/320/180">
-        <img src="https://www.fillmurray.com/320/180">
+        <img src="../images/metros.png">
+        <img src="../images/user-success.png">
       </div>
     </section>
   </div>

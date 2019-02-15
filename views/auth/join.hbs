@@ -8,23 +8,28 @@ userSchema requirements
 ------------------------------------------------------------
 --}}
 
-<h1>Join</h1>
+<div class="join-page container">
+  <h1>join kahani!</h1>
+  <p>or <a href="/login">log in if you already have an account</a></p>
 
-{{> flash_messages}}
 
-<form action="/process-join" method="POST">
-  <label>
-    Username:
-    <input type="text" name="username" required />
-  </label>
-  <label>
-    Email:
-    <input type="email" name="email" required />
-  </label>
-  <label>
-    Password:
-    <input type="password" name="originalPassword" required />
-  </label>
+  {{> flash_messages}}
 
-  <button>Save</button>
-</form>
+  <form class="form-page" action="/process-join" method="POST">
+    <label class="form-field">
+      Username
+      <input style="font-size:3vh;" type="text" name="username" placeholder="jimmybuckets23" required />
+    </label>
+    <label class="form-field">
+      Email
+      <input style="font-size:3vh;" class="email" type="email" name="email" placeholder="jb23@gmail.com" required />
+    </label>
+    <label class="form-field">
+      Password
+      <input style="font-size:3vh;" type="password" name="originalPassword"
+        placeholder="the most important decision you'll ever make" required />
+    </label>
+
+    <button>create account</button>
+  </form>
+</div>

@@ -15,17 +15,26 @@
   <header>
 
     <nav>
-      <a href="/"><img src="../public/images/favicon.ico" /></a>
-      {{#if currentUser}}
-      <a href="/browse">browse</a>
-      <a href="/contribute">contribute</a>
-      <a href="/logout">logout</a>
-      {{else}}
-      <a href="/join">join</a>
-      <a href="/login">login</a>
-      {{/if}}
+      <div class="logo">
+        <a href="/"><img src="../images/favicon.ico" />kahani</a>
+      </div>
+      <div class="nav-variable-content">
+        {{#if currentUser}}
+        <a href="/">{{currentUser.username}}</a>
+        <a href="/browse">browse</a>
+        <a href="/contribute">contribute</a>
+        <a href="/logout">logout</a>
+        {{else}}
+        <a href="/join">join</a>
+        <a href="/login">login</a>
+        {{/if}}
+      </div>
     </nav>
   </header>
+  <div class="background">
+  </div>
+
+
 
   {{{body}}}
 
