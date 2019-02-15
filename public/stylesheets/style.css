@@ -11,88 +11,79 @@ body {
   background: linear-gradient(to top, #4b134f, #c94b4b);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background-repeat: no-repeat;
-  background-attachment: fixed;
-}
+  background-attachment: fixed; }
 
 a,
 a:hover {
   color: rgba(255, 255, 255, 0.9);
-  text-decoration: none;
-}
+  text-decoration: none; }
 
 /* HOME PAGE */
 .container {
-  padding: 20px 120px;
-}
+  padding: 20px 120px; }
 
 #title {
   color: rgba(255, 255, 255, 0.9);
-  text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
-}
+  text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7); }
 
 .card-deck {
-  margin-bottom: 20px;
-}
+  margin-bottom: 20px; }
 
 .card {
   border: none;
   background-color: rgba(255, 255, 255, 0.7);
   box-shadow: 5px 5px 15px 1px rgba(0, 0, 0, 0.2);
-  color: white;
-}
+  color: white; }
 
 .card h5 {
   font-size: 1em;
-  margin-bottom: 5px;
-}
+  margin-bottom: 5px; }
 
 .card p {
-  font-size: 0.8em;
-}
+  font-size: 0.8em; }
 
 a.card,
 a.card:hover {
   color: white;
-  text-decoration: none;
-}
+  text-decoration: none; }
 
 /* BROWSE PAGE */
 header {
   position: relative;
-  z-index: 1;
-}
+  z-index: 1; }
 
 a {
-  margin: 0 10px;
-}
+  margin: 0 10px; }
 
 #navbarNavText {
-  justify-content: space-between;
-}
+  justify-content: space-between; }
 
 /* METRO CHALLENGE (BROWSE PAGE) */
 .navbar {
-  background-color: #00c4b3;
-}
+  background-color: #00c4b3; }
 
 span {
   font-weight: bold;
-  font-size: 1.2em;
-}
+  font-size: 1.2em; }
 
 .username-metro {
   background-color: #00c4b3;
-  color: white;
-}
+  color: white; }
 
 .score-metro {
   background-color: #050d9e;
-  color: white;
-}
+  color: white; }
 
 .dropdown-item {
-  font-size: 0.7em;
-}
+  font-size: 0.7em; }
+
+/* JOIN PAGE */
+#join-title {
+  margin: 20px 40px; }
+
+#join-form {
+  width: 50%;
+  margin: 0 auto; }
 
 /* MAP */
 #map {
@@ -101,63 +92,46 @@ span {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 0;
-}
+  z-index: 0; }
 
 /* MEDIA QUERIES */
 @media (max-width: 576px) {
   .container {
-    padding: 0 0;
-  }
+    padding: 0 0; }
   h1 {
-    font-size: 1rem;
-  }
-}
+    font-size: 1rem; } }
 
 @media (min-width: 576px) {
   .container {
-    padding: 0 0;
-  }
-}
+    padding: 0 0; } }
 
 @media (min-width: 768px) {
   .container {
-    padding: 10px 30px;
-  }
-}
+    padding: 10px 30px; } }
 
 @media (min-width: 992px) {
   .container {
-    padding: 10px 60px;
-  }
-}
+    padding: 10px 60px; } }
 
 @media (min-width: 1200px) {
   .container {
-    padding: 20px 120px;
-  }
-}
+    padding: 20px 120px; } }
 
 .card-deck {
-  padding: 0 30px;
-}
+  padding: 0 30px; }
 
 .myHeader {
-  text-align: center;
-}
-.myHeader .myLogo {
-  height: 100px;
-  margin: 25px;
-}
+  text-align: center; }
+  .myHeader .myLogo {
+    height: 100px;
+    margin: 25px; }
 
 .myLogo2 {
   height: 50px;
-  margin: 5px;
-}
+  margin: 5px; }
 
 #tagline {
   font-size: 7vh;
-  margin: 15px;
-}
+  margin: 15px; }
 
 /*# sourceMappingURL=style.css.map */
