@@ -74,5 +74,15 @@
     "challenges_active": [],
     "challenges_completed": [],
     "challenges_queued": []
+  },
+  {
+    "username": "test",
+    "email": "test@test.test",
+    "password": "test",
+    "role": "normal",
+    "collected": ["Billancourt", "Marcel Sembat", "Exelmans", "Voltaire"],
+    "challenges_active": [],
+    "challenges_completed": [],
+    "challenges_queued": []
   }
 ]
