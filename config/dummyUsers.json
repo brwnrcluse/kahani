@@ -74,5 +74,15 @@
     "challenges_active": [],
     "challenges_completed": [],
     "challenges_queued": []
+  },
+  {
+    "username": "nizar",
+    "email": "nizar@nizar.nizar",
+    "password": "nizar",
+    "role": "normal",
+    "collected": ["Billancourt", "Marcel Sembat", "Exelmans", "Voltaire"],
+    "challenges_active": [],
+    "challenges_completed": [],
+    "challenges_queued": []
   }
 ]

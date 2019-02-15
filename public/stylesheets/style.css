@@ -131,4 +131,18 @@ span {
 .card-deck {
   padding: 0 30px; }
 
+.myHeader {
+  text-align: center; }
+  .myHeader .myLogo {
+    height: 100px;
+    margin: 25px; }
+
+.myLogo2 {
+  height: 50px;
+  margin: 5px; }
+
+#tagline {
+  font-size: 7vh;
+  margin: 15px; }
+
 /*# sourceMappingURL=style.css.map */

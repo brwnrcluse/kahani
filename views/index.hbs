@@ -1,17 +1,21 @@
 {{> flash_messages}}
 
+{{!-- <a href="/"><img src="../images/kahani_logo.png" /> </a> --}}
 <div class="container">
   <!-- Title & description -->
   <div class="row justify-content-center">
-    <div class="col" id="title">
-      <h1 class="display-1 text-center">Kahani</h1>
-      <h2 class="lead text-center">Explore, collect & challenge.</h2>
+    <div class="col myHeader" id="title">
+      {{!-- <h1 class="display-1 text-center">Kahani</h1> --}}
+      <a href="/"><img src="../images/kahani_logo.png" class="myLogo" /> </a>
+      <h1 id='tagline' class="lead text-center">Explore, collect & challenge.
+      </h1>
       {{#if currentUser}}
       <p class="text-center">Welcome back, {{currentUser.username}}.</p>
       {{else}}
       <p class="text-center">NEW? <a class="btn btn-lg" href="/join" role="button" data-toggle="modal"
           data-target="#joinModal">Join</a> ALREADY A USER?
-        <a class="btn btn-lg" href="/login" role="button" data-toggle="modal" data-target="#loginModal">Log In</a></p>
+        <a class="btn btn-lg" href="/login" role="button" data-toggle="modal" data-target="#loginModal">Log In</a>
+      </p>
       {{/if}}
     </div>
   </div>
