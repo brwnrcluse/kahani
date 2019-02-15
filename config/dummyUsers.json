@@ -4,7 +4,14 @@
     "email": "sparrow@theblackpearl.com",
     "password": "wherehastherumgone",
     "role": "normal",
-    "collected": ["Duroc"],
+    "collected": [
+      "Duroc",
+      "Bastille",
+      "Argentine",
+      "Nation",
+      "Concorde",
+      "Tuileries"
+    ],
     "challenges_active": [],
     "challenges_completed": [],
     "challenges_queued": []
@@ -14,7 +21,14 @@
     "email": "coco@chanel.com",
     "password": "fashion",
     "role": "normal",
-    "collected": ["Duroc"],
+    "collected": [
+      "Duroc",
+      "Strasbourg-Saint-Denis",
+      "Gare du Nord",
+      "Gare de l'Est",
+      "Vavin",
+      "Raspail"
+    ],
     "challenges_active": [],
     "challenges_completed": [],
     "challenges_queued": []
@@ -24,7 +38,7 @@
     "email": "jps@existential.ist",
     "password": "crabs",
     "role": "normal",
-    "collected": ["Duroc"],
+    "collected": ["Ternes", "Courcelles", "Monceau", "Villiers", "Rome"],
     "challenges_active": [],
     "challenges_completed": [],
     "challenges_queued": []
@@ -34,7 +48,13 @@
     "email": "fem@free.com",
     "password": "iDoMe",
     "role": "normal",
-    "collected": ["Duroc"],
+    "collected": [
+      "Place de Clichy",
+      "Blanche",
+      "Anvers",
+      "Porte de la Chapelle",
+      "Stalingrad"
+    ],
     "challenges_active": [],
     "challenges_completed": [],
     "challenges_queued": []
@@ -44,7 +64,13 @@
     "email": "kyky@france.fr",
     "password": "backofthenet",
     "role": "normal",
-    "collected": ["Duroc"],
+    "collected": [
+      "Ourcq",
+      "Oberkampf",
+      "Richard Lenoir",
+      "Saint-Marcel",
+      "Campo Formio"
+    ],
     "challenges_active": [],
     "challenges_completed": [],
     "challenges_queued": []
