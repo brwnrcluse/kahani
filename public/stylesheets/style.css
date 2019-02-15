@@ -134,15 +134,15 @@ span {
 .myHeader {
   text-align: center; }
   .myHeader .myLogo {
-    height: 100px;
-    margin: 25px; }
+    height: 95px;
+    margin: 20px; }
 
 .myLogo2 {
   height: 50px;
   margin: 5px; }
 
 #tagline {
-  font-size: 7vh;
+  font-size: 6vh;
   margin: 15px; }
 
 /*# sourceMappingURL=style.css.map */

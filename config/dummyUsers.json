@@ -80,7 +80,7 @@
     "email": "test@test.test",
     "password": "test",
     "role": "normal",
-    "collected": ["Billancourt", "Marcel Sembat", "Exelmans", "Voltaire"],
+    "collected": ["Billancourt", "Marcel Sembat", "Exelmans", "Robespierre"],
     "challenges_active": [],
     "challenges_completed": [],
     "challenges_queued": []
