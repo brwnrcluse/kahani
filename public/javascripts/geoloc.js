@@ -2,7 +2,7 @@ let currentPositionMarker = {};
 const mapCenter = new google.maps.LatLng(48.864716, 2.349014);
 let map = {};
 const circles = [];
-const circleRadius = 100;
+const circleRadius = 400;
 
 const markerColor = "#050D9E";
 const tobepickedColor = "#E2231A";
@@ -161,7 +161,7 @@ function displayAndWatch(position) {
   // set current position
   setCurrentPosition(position);
 
-  smoothZoom(map, 17, map.getZoom());
+  //smoothZoom(map, 17, map.getZoom());
 
   // watch position
   watchCurrentPosition();

@@ -27,7 +27,7 @@ Metro.findOne({ name: { $eq: "Cambronne" } })
   .then(metroDoc => {
     User.findByIdAndUpdate(
       "5c62f67e6d9ba502f4ed0bd8",
-      { $push: { challenges_active: metroDoc } },
+      { $addToSet: { challenges_active: metroDoc } },
       { runValidators: true }
     )
       .then(userDoc => {

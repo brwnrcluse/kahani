@@ -3,8 +3,51 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font: 16px "Cairo", sans-serif; }
+  font: 16px "Cairo", sans-serif;
+  background: #c94b4b;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #4b134f, #c94b4b);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #4b134f, #c94b4b);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-repeat: no-repeat;
+  background-attachment: fixed; }
 
+a,
+a:hover {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none; }
+
+/* HOME PAGE */
+.container {
+  padding: 20px 120px; }
+
+#title {
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7); }
+
+.card-deck {
+  margin-bottom: 20px; }
+
+.card {
+  border: none;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 5px 5px 15px 1px rgba(0, 0, 0, 0.2);
+  color: white; }
+
+.card h5 {
+  font-size: 1em;
+  margin-bottom: 5px; }
+
+.card p {
+  font-size: 0.8em; }
+
+a.card,
+a.card:hover {
+  color: white;
+  text-decoration: none; }
+
+/* BROWSE PAGE */
 header {
   position: relative;
   z-index: 1; }
@@ -12,15 +55,12 @@ header {
 a {
   margin: 0 10px; }
 
-.jumbotron {
-  margin: 20px auto;
-  width: 80%; }
-
-.navbar {
-  background-color: #00c4b3; }
-
 #navbarNavText {
   justify-content: space-between; }
+
+/* Metro Challenge */
+.navbar {
+  background-color: #00c4b3; }
 
 span {
   font-weight: bold;
@@ -34,37 +74,6 @@ span {
   background-color: #050d9e;
   color: white; }
 
-.homepage {
-  list-style: none; }
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%; }
-
-.join-bait {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  height: 100%;
-  width: 100%; }
-
-.homepage-form {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  width: 100%; }
-
-.homepage-form form {
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  height: 100%;
-  width: 100%; }
-
 .form-field {
   display: flex;
   flex-direction: row;
@@ -77,13 +86,6 @@ span {
 .form-field input {
   margin-left: 2vh;
   border-radius: 15px; }
-
-.screenshots {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%; }
 
 .screenshots .image-holder {
   display: flex;
@@ -103,5 +105,30 @@ span {
   top: 0;
   left: 0;
   z-index: 0; }
+
+@media (max-width: 576px) {
+  .container {
+    padding: 0 0; }
+  h1 {
+    font-size: 1rem; } }
+
+@media (min-width: 576px) {
+  .container {
+    padding: 0 0; } }
+
+@media (min-width: 768px) {
+  .container {
+    padding: 10px 30px; } }
+
+@media (min-width: 992px) {
+  .container {
+    padding: 10px 60px; } }
+
+@media (min-width: 1200px) {
+  .container {
+    padding: 20px 120px; } }
+
+.card-deck {
+  padding: 0 30px; }
 
 /*# sourceMappingURL=style.css.map */

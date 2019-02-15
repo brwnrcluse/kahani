@@ -39,7 +39,7 @@ router.post("/clicked", (req, res, next) => {
     .then(metroDoc => {
       User.findByIdAndUpdate(
         req.user._id,
-        { $push: { collected: metroDoc } },
+        { $addToSet: { collected: metroDoc } },
         { runValidators: true }
       )
         .then(userDoc => {

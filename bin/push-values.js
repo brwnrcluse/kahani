@@ -24,7 +24,7 @@ Metro.findOne({ name: { $eq: "Château d'Eau" } })
   .then(metroDoc => {
     User.findByIdAndUpdate(
       "5c62c976775e58348e76f852",
-      { $push: { collected: metroDoc } },
+      { $addToSet: { collected: metroDoc } },
       { runValidators: true }
     )
       .then(userDoc => {

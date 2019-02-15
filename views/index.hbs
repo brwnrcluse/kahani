@@ -1,64 +1,131 @@
-<div class="jumbotron">
-  <h1 class="display-4">Explore the stories around you.</h1>
-  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="images/dark.png" class="d-block w-80 " alt="...">
+{{> flash_messages}}
+
+<div class="container">
+  <!-- Title & description -->
+  <div class="row justify-content-center">
+    <div class="col" id="title">
+      <h1 class="display-1 text-center">Kahani</h1>
+      <h2 class="lead text-center">Explore, collect & challenge.</h2>
+      {{#if currentUser}}
+      <p class="text-center">Welcome back, {{currentUser.username}}.</p>
+      {{else}}
+      <p class="text-center">NEW? <a class="btn btn-lg" href="/join" role="button" data-toggle="modal"
+          data-target="#joinModal">Join</a> ALREADY A USER?
+        <a class="btn btn-lg" href="/login" role="button" data-toggle="modal" data-target="#loginModal">Log In</a></p>
+      {{/if}}
+    </div>
+  </div>
+  <!-- List all challenges available + nb of current registered players (TBD) -->
+  <div class="row justify-content-center card-deck">
+    <a href="/browse" class="card" id="metro-challenge">
+      <img src="images/metro-challenge.png" class="card-img-top" alt="challenge1-img">
+      <div class="card-body">
+        <h5 class="card-title">Metro Stations</h5>
+        <p class="card-text">Be the first to collect all metro stations in Paris.</p>
       </div>
-      <div class="carousel-item">
-        <img src="images/light.png" class="d-block w-80" alt="...">
+      <div class="card-footer">
+        <small class="text-muted">Currently 19 players</small>
       </div>
-      <div class="carousel-item">
-        <img src="images/sepia.png" class="d-block w-80" alt="...">
+    </a>
+    <div class="card">
+      <img src="images/sepia.png" class="card-img-top" alt="challenge2-img">
+      <div class="card-body">
+        <h5 class="card-title">Challenge #2</h5>
+        <p class="card-text">Discover all street commemorative plaques from 1939-1945.</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Currently 7 players</small>
       </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+    <div class="card">
+      <img src="images/outline.png" class="card-img-top" alt="challenge3-img">
+      <div class="card-body">
+        <h5 class="card-title">Challenge #3</h5>
+        <p class="card-text">Get hidden messages placed around the capital.</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Currently 0 players</small>
+      </div>
+    </div>
   </div>
 
-
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <a class="btn btn-lg" href="#" role="button">Join the challenge!</a>
+  {{#if currentUser}}
+  <div class="row justify-content-center">
+    <a href="/logout">Log Out</a>
+  </div>
+  {{/if}}
 </div>
 
+<!-- Join Modal -->
+<div class="modal fade" id="joinModal" tabindex="-1" role="dialog" aria-labelledby="joinModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="joinModalLabel">Create a new user</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
 
-<div class="join-bait">
-  <section class="homepage-form">
-    <label class="join-form">join
-      <form action="/process-join" method="POST">
-        <label class="form-field">
-          Username:
-          <input type="text" name="username" required />
-        </label>
-        <label class="form-field">
-          Email:
-          <input type="email" name="email" required />
-        </label>
-        <label class="form-field">
-          Password:
-          <input type="password" name="originalPassword" required />
-        </label>
+        <form action="/process-join" method="POST">
+          <div class="form-group">
+            <label for="inputUsername">Username</label>
+            <input type="text" name="username" class="form-control" id="inputUsername" placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <label for="inputEmail">Email address</label>
+            <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" name="originalPassword" class="form-control" id="inputPassword"
+              placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
 
-        <button>Save</button>
-      </form>
-    </label>
-  </section>
 
-  <section class="screenshots">
-    <div class="image-holder">
-      <img src="https://www.fillmurray.com/320/180">
-      <img src="https://www.fillmurray.com/320/180">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Join</button>
+      </div>
     </div>
-  </section>
+  </div>
+</div>
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form action="/process-login" method="POST">
+          <div class="form-group">
+            <label for="inputUsername">Username</label>
+            <input type="text" name="username" class="form-control" id="inputUsername" placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" name="originalPassword" class="form-control" id="inputPassword"
+              placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Log In</button>
+      </div>
+    </div>
+  </div>
 </div>
