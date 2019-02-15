@@ -32,7 +32,7 @@ router.post("/process-login", (req, res, next) => {
   // ensure all fields are filled
   if (!username || !originalPassword) {
     req.flash("error", "please fill out all fields");
-    res.redirect("/login");
+    res.redirect("/");
     return;
   }
 
@@ -42,7 +42,7 @@ router.post("/process-login", (req, res, next) => {
       // checks if username exists in db
       if (!userDoc) {
         req.flash("error", "Username is incorrect or doesn't exist.");
-        res.redirect("/login");
+        res.redirect("/");
         return;
       }
 
@@ -50,7 +50,7 @@ router.post("/process-login", (req, res, next) => {
       const { encryptedPassword } = userDoc;
       if (!bcrypt.compareSync(originalPassword, encryptedPassword)) {
         req.flash("error", "Sorry, wrong password...");
-        res.redirect("/login");
+        res.redirect("/");
         return;
       }
 
@@ -77,7 +77,7 @@ router.post("/process-join", (req, res, next) => {
   // ensure all fields are filled
   if (!username || !email || !originalPassword) {
     req.flash("error", "Please, fill out ALL fields.");
-    res.redirect("/join");
+    res.redirect("/");
     return;
   }
 
@@ -89,7 +89,7 @@ router.post("/process-join", (req, res, next) => {
     .then(userDoc => {
       if (userDoc) {
         req.flash("error", "Username already exists!");
-        res.redirect("/join");
+        res.redirect("/");
         return;
       }
     })
@@ -101,7 +101,7 @@ router.post("/process-join", (req, res, next) => {
       if (userDoc) {
         req.flash("error", "There is already an account with this email!");
         // ADD A FIND/RETRIEVE PASSWORD FUNCTIONALITY TO JOIN.HBS
-        res.redirect("/join");
+        res.redirect("/");
         return;
       }
     })
