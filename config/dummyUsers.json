@@ -1,0 +1,52 @@
+[
+  {
+    "username": "captainJack",
+    "email": "sparrow@theblackpearl.com",
+    "password": "wherehastherumgone",
+    "role": "normal",
+    "collected": ["Duroc"],
+    "challenges_active": [],
+    "challenges_completed": [],
+    "challenges_queued": []
+  },
+  {
+    "username": "coco chanel",
+    "email": "coco@chanel.com",
+    "password": "fashion",
+    "role": "normal",
+    "collected": ["Duroc"],
+    "challenges_active": [],
+    "challenges_completed": [],
+    "challenges_queued": []
+  },
+  {
+    "username": "sartre",
+    "email": "jps@existential.ist",
+    "password": "crabs",
+    "role": "normal",
+    "collected": ["Duroc"],
+    "challenges_active": [],
+    "challenges_completed": [],
+    "challenges_queued": []
+  },
+  {
+    "username": "simone",
+    "email": "fem@free.com",
+    "password": "iDoMe",
+    "role": "normal",
+    "collected": ["Duroc"],
+    "challenges_active": [],
+    "challenges_completed": [],
+    "challenges_queued": []
+  },
+  {
+    "username": "kmbappe",
+    "email": "kyky@france.fr",
+    "password": "backofthenet",
+    "role": "normal",
+    "collected": ["Duroc"],
+    "challenges_active": [],
+    "challenges_completed": [],
+    "challenges_queued": []
+  }
+]
