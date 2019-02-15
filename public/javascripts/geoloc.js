@@ -2,8 +2,12 @@ let currentPositionMarker = {};
 const mapCenter = new google.maps.LatLng(48.864716, 2.349014);
 let map = {};
 const circles = [];
-const circleRadius = 250;
-const collectedColor = "#0F0";
+const circleRadius = 100;
+
+const markerColor = "#050D9E";
+const tobepickedColor = "#E2231A";
+const detectedColor = "#FFCD00";
+const collectedColor = "#00AE41";
 
 const initOptions = {
   enableHighAccuracy: true,
@@ -20,18 +24,7 @@ const mapOptions = {
   scaleControl: true,
   rotateControl: true,
   styles: [
-    /* {
-        featureType: "transit.station.rail",
-        elementType: "labels.icon",
-        stylers: [
-          {
-            color: "#ff0000"
-          },
-          {
-            visibility: "on"
-          }
-        ]
-      },*/ {
+    {
       featureType: "all",
       elementType: "geometry",
       stylers: [
@@ -72,7 +65,7 @@ const mapOptions = {
           color: "#000000"
         },
         {
-          lightness: "80"
+          lightness: "90"
         }
       ]
     },
@@ -100,9 +93,6 @@ const mapOptions = {
       stylers: [
         {
           visibility: "on"
-        },
-        {
-          weight: "4"
         }
       ]
     },
@@ -148,11 +138,11 @@ function setCurrentPosition(position) {
     ),
     icon: {
       path: google.maps.SymbolPath.CIRCLE,
-      scale: 10,
-      fillColor: "#00F",
+      scale: 12,
+      fillColor: markerColor,
       fillOpacity: 0.7,
       strokeWeight: 0.1,
-      strokeColor: "#00F"
+      strokeColor: markerColor
     },
     name: "Current Position"
   });
@@ -171,7 +161,7 @@ function displayAndWatch(position) {
   // set current position
   setCurrentPosition(position);
 
-  //smoothZoom(map, 16, map.getZoom());
+  smoothZoom(map, 17, map.getZoom());
 
   // watch position
   watchCurrentPosition();
@@ -208,11 +198,10 @@ function updateDistance(position) {
 
     if (distance <= circleRadius && circle.collected === false) {
       let direction = 1;
-      let rMin = circleRadius - 150,
+      let rMin = circleRadius - 50,
         rMax = circleRadius;
       let interval = setInterval(() => {
         let rad = circle.getRadius();
-        console.log(rad);
         if (rad > rMax || rad < rMin) {
           direction *= -1;
         }
@@ -251,8 +240,6 @@ function allItems(map, circleArray) {
     axios
       .get("/allmetros")
       .then(response => {
-        console.log("START OF THEN");
-
         const allItems = response.data;
 
         allItems.forEach(item => {
@@ -260,10 +247,10 @@ function allItems(map, circleArray) {
             map: map,
             center: { lat: item.location[0], lng: item.location[1] },
             radius: circleRadius,
-            fillColor: "#F00",
-            fillOpacity: 0.4,
+            fillColor: tobepickedColor,
+            fillOpacity: 0.6,
             strokeWeight: 0.1,
-            strokeColor: "#F00",
+            strokeColor: tobepickedColor,
             name: item.name,
             collected: false
           });
@@ -284,7 +271,6 @@ async function collectedItems(map, circleArray) {
   axios
     .get("/mymetros")
     .then(response => {
-      console.log("START OF THEN // COLLECTED ITEMS");
       const userCollection = response.data.collected;
 
       userCollection.forEach(item => {
@@ -297,8 +283,6 @@ async function collectedItems(map, circleArray) {
               strokeColor: collectedColor,
               collected: true
             });
-
-            console.log(`COLOR CHANGED on ${circle.name}`);
           }
         });
       });
@@ -312,7 +296,6 @@ function updateCollectionAfterClick(name) {
     .post("/clicked", { itemName: name })
     .then(() => {
       collectedItems(map, circles);
-      console.log("Collection updated, map should be too.");
     })
     .catch(err =>
       console.log("ERROR in updateCollectionAfterClick", err.response.data)
@@ -338,14 +321,14 @@ function smoothZoom(map, max, cnt) {
   if (cnt >= max) {
     return;
   } else {
-    setTimeout(function() {
+    setTimeout(() => {
       z = google.maps.event.addListener(map, "zoom_changed", function(event) {
         google.maps.event.removeListener(z);
-        smoothZoom(map, max, cnt + 0.1);
+        smoothZoom(map, max, cnt + 1);
       });
-      setTimeout(function() {
+      setTimeout(() => {
         map.setZoom(cnt);
       }, 100);
-    }, 2000);
+    }, 1000);
   }
 }

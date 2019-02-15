@@ -1,14 +1,99 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCo80DGqCfxUhFzGtIHuMi-k4PNbd65FLw"></script>
 
-<script>
-  if ("geolocation" in navigator) {
-    console.log("GEOLOC OK");
-  } else {
-    console.log("GEOLOC NOT OK");
-  }
-</script>
+<header>
+  <nav class="navbar navbar-dark navbar-expand-lg">
+    <a class="navbar-brand" href="/">Kahani</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavText">
+      <ul class="navbar-nav">
+        {{#if currentUser}}
+        <li class="nav-item">
+          <a class="nav-link" href="#">Username: {{currentUser.username}}</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false"
+            style="border: 1px solid rgba(255,255,255,0.5); border-radius: 15px;">
+            Challenge: Metro Stations
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Ligne 1: <span id="line1">0</span>%</a>
+            <a class="dropdown-item" href="#">Ligne 2: <span id="line1">0</span>%</a>
+            <a class="dropdown-item" href="#">Ligne 3: <span id="line1">0</span>%</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Total (305 stations): <span id="line1">0</span>%</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#"
+            style="border: 1px solid rgba(255,255,255,0.5); border-radius: 15px;">Leaderboard</a>
+        </li>
+        {{else}}
+        <li class="nav-item">
+          <a class="nav-link" href="/join">Join</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="/"
+            style="border: 1px solid rgba(255,255,255,0.5); border-radius: 15px;">Leaderboard</a>
+        </li>
+        {{/if}}
+      </ul>
 
+      {{#if currentUser}}
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/logout"
+            style="border: 1px solid rgba(255,255,255,0.5); border-radius: 15px;">Logout</a>
+        </li>
+      </ul>
+      {{/if}}
+
+    </div>
+  </nav>
+</header>
+
+<!-- Map-->
 <div id="map"></div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Top 10 for the Metro Stations Challenge</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center"></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center"></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center"></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center"></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center"></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center"></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center"></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center"></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center"></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center"></li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Join the challenge</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="javascripts/geoloc.js"></script>
+<script src="javascripts/scores.js"></script>
