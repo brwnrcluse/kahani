@@ -1,23 +1,20 @@
-<h1>Join</h1>
-
-
+<h1 id="join-title">Join</h1>
 {{> flash_messages}}
 
-<form class="form-page" action="/process-join" method="POST">
-  <label class="form-field">
-    Username
-    <input style="font-size:3vh;" type="text" name="username" placeholder="jimmybuckets23" required />
-  </label>
-  <label class="form-field">
-    Email
-    <input style="font-size:3vh;" class="email" type="email" name="email" placeholder="jb23@gmail.com" required />
-  </label>
-  <label class="form-field">
-    Password
-    <input style="font-size:3vh;" type="password" name="originalPassword"
-      placeholder="the most important decision you'll ever make" required />
-  </label>
-
-  <button>create account</button>
-</form>
+<div id="join-form">
+  <form action="/process-join" method="POST">
+    <div class="form-group">
+      <label for="inputUsername">Username</label>
+      <input type="text" name="username" class="form-control" id="inputUsername" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="inputEmail">Email address</label>
+      <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="inputPassword">Password</label>
+      <input type="password" name="originalPassword" class="form-control" id="inputPassword" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 </div>

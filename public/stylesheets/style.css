@@ -77,6 +77,16 @@ span {
 .dropdown-item {
   font-size: 0.7em; }
 
+/* JOIN PAGE */
+#join-title {
+  margin: 20px 40px;
+}
+
+#join-form {
+  width: 50%;
+  margin: 0 auto;
+}
+
 /* MAP */
 #map {
   height: 100%;
