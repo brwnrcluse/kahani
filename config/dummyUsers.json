@@ -1,0 +1,78 @@
+[
+  {
+    "username": "captainJack",
+    "email": "sparrow@theblackpearl.com",
+    "password": "wherehastherumgone",
+    "role": "normal",
+    "collected": [
+      "Duroc",
+      "Bastille",
+      "Argentine",
+      "Nation",
+      "Concorde",
+      "Tuileries"
+    ],
+    "challenges_active": [],
+    "challenges_completed": [],
+    "challenges_queued": []
+  },
+  {
+    "username": "coco chanel",
+    "email": "coco@chanel.com",
+    "password": "fashion",
+    "role": "normal",
+    "collected": [
+      "Duroc",
+      "Strasbourg-Saint-Denis",
+      "Gare du Nord",
+      "Gare de l'Est",
+      "Vavin",
+      "Raspail"
+    ],
+    "challenges_active": [],
+    "challenges_completed": [],
+    "challenges_queued": []
+  },
+  {
+    "username": "sartre",
+    "email": "jps@existential.ist",
+    "password": "crabs",
+    "role": "normal",
+    "collected": ["Ternes", "Courcelles", "Monceau", "Villiers", "Rome"],
+    "challenges_active": [],
+    "challenges_completed": [],
+    "challenges_queued": []
+  },
+  {
+    "username": "simone",
+    "email": "fem@free.com",
+    "password": "iDoMe",
+    "role": "normal",
+    "collected": [
+      "Place de Clichy",
+      "Blanche",
+      "Anvers",
+      "Porte de la Chapelle",
+      "Stalingrad"
+    ],
+    "challenges_active": [],
+    "challenges_completed": [],
+    "challenges_queued": []
+  },
+  {
+    "username": "kmbappe",
+    "email": "kyky@france.fr",
+    "password": "backofthenet",
+    "role": "normal",
+    "collected": [
+      "Ourcq",
+      "Oberkampf",
+      "Richard Lenoir",
+      "Saint-Marcel",
+      "Campo Formio"
+    ],
+    "challenges_active": [],
+    "challenges_completed": [],
+    "challenges_queued": []
+  }
+]
