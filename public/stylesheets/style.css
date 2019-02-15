@@ -85,6 +85,14 @@ span {
   width: 50%;
   margin: 0 auto; }
 
+/* LOGIN PAGE */
+#login-title {
+  margin: 20px 40px; }
+
+#login-form {
+  width: 50%;
+  margin: 0 auto; }
+
 /* MAP */
 #map {
   height: 100%;
